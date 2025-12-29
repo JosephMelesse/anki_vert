@@ -4,167 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>anki_vert</title>
-    <style>
-      :root {
-        --bg: rgb(10, 10, 10);
-        --ink: rgb(255, 145, 40);
-        --muted: rgba(255, 145, 40, 0.85);
-        --panel: rgb(59, 59, 59);
-        --glow: rgba(255, 145, 40, 0.2);
-        --line-strong: rgba(255, 145, 40, 0.75);
-        --line-soft: rgba(255, 145, 40, 0.5);
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        background-color: var(--bg);
-        color: var(--ink);
-        font-family: "Fira Code", "JetBrains Mono", "Courier New", monospace;
-        letter-spacing: 0.5px;
-        text-shadow: 0 0 10px rgba(100, 56, 15, 0.5);
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: transparent;
-        pointer-events: none;
-      }
-
-      .page {
-        position: relative;
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 28px 24px 64px;
-      }
-
-      nav {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        text-transform: lowercase;
-      }
-
-      .nav-left,
-      .nav-right {
-        display: flex;
-        gap: 24px;
-        font-size: 18px;
-      }
-
-      .nav-link {
-        text-decoration: none;
-        color: var(--ink);
-        transition: color 0.2s ease, text-shadow 0.2s ease;
-      }
-
-      .nav-link:hover {
-        color: rgb(140, 90, 35);
-        text-shadow: 0 0 10px rgba(100, 56, 15, 0.6);
-      }
-
-      .title {
-        margin-top: 36px;
-        font-size: 32px;
-        text-transform: lowercase;
-      }
-
-      .textbox {
-        margin-top: 14px;
-        background: var(--panel);
-        border: 1px solid var(--line-soft);
-        padding: 18px 20px;
-        border-radius: 10px;
-        color: var(--ink);
-        font-size: 16px;
-        width: 100%;
-        outline: none;
-        box-shadow: 0 0 0 1px rgba(100, 56, 15, 0.2), 0 12px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .textbox::placeholder {
-        color: var(--muted);
-      }
-
-      .textbox:focus {
-        border-color: var(--line-strong);
-        box-shadow: 0 0 0 1px rgba(100, 56, 15, 0.35), 0 0 14px rgba(100, 56, 15, 0.25);
-      }
-
-      .actions {
-        margin-top: 18px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .action-btn {
-        background: transparent;
-        border: 1px solid var(--line-strong);
-        color: var(--ink);
-        padding: 10px 18px;
-        text-transform: lowercase;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .action-btn:hover {
-        transform: translateY(-2px);
-        background: rgba(100, 56, 15, 0.2);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
-      }
-
-      .action-btn:focus-visible {
-        outline: 2px solid var(--line-strong);
-        outline-offset: 2px;
-      }
-
-      table {
-        width: 100%;
-        margin-top: 28px;
-        border-collapse: collapse;
-        text-transform: lowercase;
-      }
-
-      th,
-      td {
-        border: 1px solid var(--line-soft);
-        padding: 14px 16px;
-      }
-
-      th {
-        text-align: left;
-        font-size: 15px;
-        letter-spacing: 1px;
-      }
-
-      tbody tr {
-        background: rgba(59, 59, 59, 0.75);
-      }
-
-      @media (max-width: 640px) {
-        .nav-left,
-        .nav-right {
-          gap: 16px;
-          font-size: 16px;
-        }
-
-        .title {
-          font-size: 26px;
-        }
-
-        .actions {
-          flex-direction: column;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="page">
@@ -172,9 +12,15 @@
         <div class="nav-left">
           <a class="nav-link" href="#">anki_vert</a>
         </div>
+        <div class="nav-center">
+          <div class="nav-status">
+            <span>anki</span>
+            <span class="status-dot" aria-label="anki status"></span>
+          </div>
+        </div>
         <div class="nav-right">
           <a class="nav-link" href="#">how-to</a>
-          <a class="nav-link" href="#">github</a>
+          <a class="nav-link" target = "_blank" href="https://github.com/JosephMelesse/anki_vert">github</a>
         </div>
       </nav>
 
@@ -185,8 +31,13 @@
         <button class="action-btn" type="button">scan</button>
         <button class="action-btn" type="button">sync</button>
         <button class="action-btn" type="button">dry-run</button>
+        <div class="status-bar" role="status" aria-live="polite">
+          <span class="status-label">status</span>
+          <span class="status-content">idle</span>
+        </div>
       </div>
 
+      <div class="table-title">flash_cards</div>
       <table>
         <thead>
           <tr>
@@ -202,5 +53,6 @@
         </tbody>
       </table>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
