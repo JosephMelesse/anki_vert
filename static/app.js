@@ -1,7 +1,13 @@
 const statusContent = document.querySelector(".status-content");
+const statusDot = document.querySelector(".status-dot");
 const actions = document.querySelector(".actions");
 let loadingTimer = null;
 let isLoading = false;
+
+// Temporary default: show Anki as online until real status is wired up.
+if (statusDot) {
+  statusDot.classList.add("is-offline");
+}
 
 // Placeholder copy for each action; wire these to real responses later.
 const messages = {
