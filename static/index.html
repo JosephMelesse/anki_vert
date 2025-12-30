@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>anki_vert</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/static/style.css" />
   </head>
   <body>
     <div class="page">
@@ -19,18 +19,29 @@
           </div>
         </div>
         <div class="nav-right">
-          <a class="nav-link" href="#">how-to</a>
+          <a class="nav-link" href="/static/how-to.html">how-to</a>
           <a class="nav-link" target = "_blank" href="https://github.com/JosephMelesse/anki_vert">github</a>
         </div>
       </nav>
 
       <div class="title">path</div>
-      <input class="textbox" type="text" placeholder="put your path here" />
+      <input
+        class="textbox"
+        type="text"
+        placeholder="put your path here"
+        aria-label="vault path"
+      />
 
       <div class="actions">
-        <button class="action-btn" type="button">scan</button>
-        <button class="action-btn" type="button">sync</button>
-        <button class="action-btn" type="button">dry-run</button>
+        <button class="action-btn" type="button" data-action="scan" disabled>
+          scan
+        </button>
+        <button class="action-btn" type="button" data-action="sync" disabled>
+          sync
+        </button>
+        <button class="action-btn" type="button" data-action="dry-run" disabled>
+          dry-run
+        </button>
         <div class="status-bar" role="status" aria-live="polite">
           <span class="status-label">status: </span>
           <span class="status-content">idle</span>
@@ -55,6 +66,6 @@
         </tbody>
       </table>
     </div>
-    <script src="app.js"></script>
+    <script src="/static/app.js"></script>
   </body>
 </html>
